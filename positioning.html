@@ -1,0 +1,75 @@
+<!-- we will see various technique for positioning element and creating layout -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .boxes {
+        border: 2px solid lightgreen;
+        position: relative;
+      }
+      .box {
+        height: 5rem;
+        width: 5rem;
+      }
+      .box-one {
+        background-color: gold;
+      }
+      .box-two {
+        background-color: red;
+
+        /* relative position */
+        /* to position this class relatively we can apply few value like realtive,absolute,static and so on
+        by default position value is static */
+        position: relative;
+        /* we can use left right top bottom properties to move this box around contianer1 */
+        left: 3rem;
+        /* move towards right 5rem from left
+        we can also give -ne value -rem opposite direction move */
+        top: 2rem;
+        bottom: 4rem;
+        z-index: 1;
+        /* defualt value of z-index(represent depth) in 0 for all element, higher its value more priority it have to show in front
+        if it is overlap with order element
+        with relative positioning we can move element relative to normal position */
+      }
+
+      /* absolute position */
+      /* we have absolute position, we can position an element relative to its container but container must be positon relative
+      here we have to position boxes container relative  */
+      .box-three {
+        background-color: green;
+        /* position: absolute;
+        top: 1px;
+        left:1rem */
+        /* absolute positioning
+      when we give absolute positing it remove from normal flow of page means parent point of view, it doesn't exist
+      z-index don't work for this */
+      }
+      /* box-two overwrite previous properties */
+
+      /* fixed positioning */
+      /* these element are position accoring to viewport and always stay on same position */
+      .box-two {
+        position: fixed;
+        top: 0;
+        /* it always stay on top we can also give width with left and right property like */
+        width: auto;
+        left: 1rem;
+        right: 1rem;
+      }
+      body {
+        height: 200vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boxes">
+      <div class="box box-one"></div>
+      <div class="box box-two"></div>
+      <div class="box box-three"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!-- at core we have content, padding, border, margin 
+inspect the browser we can see the detail diagram of box model -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        /* padding: 1px 2px 1px 2px; */
+        /* we give padding value as T R B L -> top right bottom left
+            if we give single value, it will same value for all direction
+            last value is not given then, left value will be right value
+            if 2 value given bottom, will use 1st value, and left will use 2nd value 
+            */
+        padding: 0px;
+        margin: 20px;
+        /* in margin we have concept of margin collapsing means if we have 2 element that have margins then their margin are collapsed into
+        single margin that confused a lot of developer */
+        border: 1px dashed green;
+        /* border value are -> border_width border_pattern border_color -> this is short form to give value to border, we can also give 
+        seperate value to them*/
+      }
+    </style>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </body>
+</html>

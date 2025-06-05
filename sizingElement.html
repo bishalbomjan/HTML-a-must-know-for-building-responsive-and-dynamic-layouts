@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: teal;
+        /* if we give padding to the box our box size will grow*/
+        padding: 20px;
+        display: inline-block;
+        /* box size will be 140*140 */
+        /* beacuse default box-sizing is content-box 
+        if we give box-sizing to border box our content will be decreased and box actual size remain 100*100 */
+        /* box-sizing: border-box; */
+      }
+      /* so to give all element of box-sizing to border-box we use universal selector like '*' */
+      * {
+        box-sizing: border-box;
+        /* now all element will have border-box */
+      }
+      .box::before {
+        /* box-sizing propery will not applicable for pseudo element 
+        if we inspect and see pseudo element we can't even find box-sizing propery which menas it is default value content-box
+        we can't see difference but it might create bug in future*/
+        content: "hello";
+      }
+      /* to implement to pseudo element we do */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <!-- width and heigh property are only respected by block level element -->
+    <!-- block level element are inserted in new line means they take entire available horizonal space if we duplciate above div 
+     we see it in new line -->
+    <!-- <div class="box"></div> -->
+    <!-- if we replace above div with span  -->
+    <span class="box"></span>
+
+    <!-- box dimension vanish, so we have inline-block value for display property which have property of both inline and block 
+    we can replace the span with div also-->
+    <div class="box"></div>
+    <!-- tiny space are because of white space we have between these element -->
+    <span class="box"></span><span class="box"></span>
+  </body>
+</html>

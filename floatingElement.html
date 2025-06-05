@@ -1,0 +1,89 @@
+<!-- This is another technique for positioning element and creating layouts -->
+<!-- example -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .avatar {
+        width: 5rem;
+        height: 5rem;
+        background-color: gold;
+        margin-right: 0.5rem;
+        float: left;
+        /* to put avatar to left side */
+        /* we don't want 2nd p element to float around so */
+      }
+      .clear {
+        clear: left;
+        /* we apply this class to element that we don't want to float around. Now, 2nd p tag is not folating around */
+        /* we can set both if we don't want element to float around both right and left */
+        clear: both;
+      }
+      .tweet {
+        border: 3px solid lightgrey;
+        /* method 3 */
+        overflow: auto;
+        /* to overflow we can set other value except visible, auto sometime gives scroll bar 
+        this is hack means dirty solution */
+        /* Note:- float is bit hard to work, we have to deal with parent collapsing and we have to clear float after
+        to create layout we should use flexbox and gird */
+      }
+      .tweet::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="tweet clearfix">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <!-- <p class="clear">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
+        provident vel magni incidunt at, earum autem, magnam labore perspiciatis
+        accusamus deleniti, quibusdam ducimus adipisci ipsam assumenda veniam
+        illo iure? Nobis vel fuga minus maxime quos tenetur ab ullam placeat
+        magni quaerat iure molestiae autem commodi nulla provident eveniet,
+        eaque hic.
+      </p> -->
+      <!-- everthing is fine if we remove 2nd p element we got layouy issue, to
+      solve this issue -->
+
+      <!-- Method 1 -->
+      <div class="clear"></div>
+      <!-- above div with clear class slove the problem but this div is not meaningful or descriptive to search engine
+       and screen reader
+       
+       Method 2
+
+       Another method to solve this is using pseudo element
+        .tweet::after{
+        content:""; -> this element by default is inline
+        display:block; -> to make block level element
+        clear:both;
+        } -->
+      <!-- if we want to use clear to other element then 
+         .clearfix::after{
+         content:""; -> this element by default is inline
+        display:block; -> to make block level element
+        clear:both;
+         } 
+        now we can apply clearfix to other element-->
+
+      <!-- method 3 -->
+      <!-- .tweet{
+          overflow:auto
+          } -->
+    </article>
+  </body>
+</html>

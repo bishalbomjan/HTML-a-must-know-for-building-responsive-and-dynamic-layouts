@@ -1,0 +1,77 @@
+<!-- using flex we can layout element in one direction row or column -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        margin: 10px;
+      }
+      .container {
+        display: flex;
+        /* our box laid out horizontally because by default flex direction for web application is row */
+        flex-direction: row;
+        /* we have column, column-reverse,row-reverse,row */
+
+        /* in flex we have 2 axis
+      -main(primary) axis and if(flex-direction:column) then column is main axis and row is secondary axis or viceversa
+      -cross(secondary) axis
+      
+      justify-content (along the main axis)
+      align-item (along the secondary or cross axis)*/
+        justify-content: center;
+        /* default value is flex-start, we have flex-end, center,space-beween,space-around and many more */
+        align-items: center;
+        /* default value is flex-start, we have many value
+        we didn't see any changes because we don't have enough vertical
+        Note:- even we give display to flex but it act as block element
+        */
+        height: 90vh;
+        /* now we see content centered in vertical direction */
+        align-content: center;
+        /* align-content only works if we have multiple line in our flex container currently we have single line add item to create 2nd line
+        and give flex direction to row */
+        /*  we add more box, flex container get small to fit more contaier that is default behaviou to solve this we 
+       give flex-wrap:wrap ,no-warp is default value*/
+        flex-wrap: wrap;
+      }
+      .box {
+        width: 5rem;
+        height: 5rem;
+        background-color: gold;
+        margin: 1rem;
+        flex-grow: 1;
+      }
+      .box-one {
+        align-self: flex-start;
+        /* applies to individual item overwirte align-item property */
+        flex-basis: 10rem;
+        /* used to send initial size of a flex item  
+        width will be 10rem, overwite width property because we give flex-direction to row*/
+        flex-grow: 2;
+        /* no unit, the growth factor */
+        flex-shrink: 2;
+        /* no unit, the shrink factor
+        flex is short hand property of all these 3 property */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box-one">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+      <div class="box">F</div>
+      <div class="box">G</div>
+      <div class="box">H</div>
+
+      <!-- -->
+    </div>
+  </body>
+</html>

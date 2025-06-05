@@ -1,0 +1,90 @@
+<!-- when we want to layout element in both row and column direction, we use gird -->
+<!-- defining gird
+  
+ display:gird;
+ gird-template-rows:100px 100px 100px; //3 rows
+ gird-template-column:repeat(2,100px); // can use repeat function 
+ gird-template:repeat(3,100px)/100px 30fr 70fr //short hand property of above, 3column 1st column->100px ,2nd column 30%of available space 
+ 70% of available space
+ justified-item:center ->for gird item to align horizonatally
+ align-item:center -> for gird item to align vertically
+ justified-content:center ->for gird container to align horizonatally
+ align-content:center -> for gird container to align vertically
+ 
+ //unit
+ fr -> fraction unit
+ %,
+ auto
+ gird-template-rows:100px auto 100px;
+ now middle row will adjust, other remian intacted.
+
+ //for gap
+ row-gap,
+ column-gap, 
+ gap is short hand property
+
+ //placing item in grid
+ gird-row: ; -> value is line in gird start/end/start/end
+ gird-column -> value is line in gird start/end/start/end
+ gird-area -> it is short hand poperty of above 2 properties
+ it is diffcult to remember line name
+
+ //placing item in named area
+ gird-template-areas:'header herader' 'siderbar main' 'footer footer'
+ gird-area: header; -> we don't need quote here
+ <div class="box box-one">A</div>
+ .box-one{
+ gird-column:2;
+ }
+it will start fron 2 column 
+by default each item take 1 cell in grid
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 5rem;
+        width: 5rem;
+        background-color: gold;
+      }
+      .container {
+        border: 3px solid yellow;
+        display: grid;
+        grid-template: repeat(3, 100px) / repeat(2, 100px);
+        justify-items: center;
+        align-items: center;
+        /* above 2 properties default value is streatch
+        if we set to streatch, it will not streatch because we give height and width to box */
+        /* justify-items: stretch; */
+        /* align-items: stretch; */
+        /* align-content: center;
+        justify-content: center; */
+        height: 100vh;
+      }
+      .box-one {
+        /* Placing item in grid */
+        /* grid-row: 2/3; */
+        /* line 2 to 3 of gird-line horizontally*/
+        grid-column: 2/-1;
+        /* line 2 to -1 of gird-line vertically
+        3 is last line so 3=-1 line 
+        */
+        /* we can also use span keyword if we find difficult to track line */
+        grid-row: 1 / span 2;
+        /* span 2 row */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box-one">A</div>
+      <div class="box box-two">B</div>
+      <div class="box box-three">C</div>
+      <div class="box box-four">D</div>
+    </div>
+  </body>
+</html>
