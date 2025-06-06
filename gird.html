@@ -47,16 +47,16 @@ by default each item take 1 cell in grid
     <title>Document</title>
     <style>
       .box {
-        height: 5rem;
-        width: 5rem;
+        /* height: 5rem;
+        width: 5rem; */
         background-color: gold;
       }
       .container {
         border: 3px solid yellow;
         display: grid;
-        grid-template: repeat(3, 100px) / repeat(2, 100px);
-        justify-items: center;
-        align-items: center;
+        /* grid-template: repeat(3, 100px) / repeat(2, 100px); */
+        justify-items: stretch;
+        align-items: stretch;
         /* above 2 properties default value is streatch
         if we set to streatch, it will not streatch because we give height and width to box */
         /* justify-items: stretch; */
@@ -64,18 +64,32 @@ by default each item take 1 cell in grid
         /* align-content: center;
         justify-content: center; */
         height: 100vh;
+        grid-template-areas: "header header" "sidebar main" ". footer";
+        /* we use dot . to empty space */
       }
       .box-one {
         /* Placing item in grid */
         /* grid-row: 2/3; */
         /* line 2 to 3 of gird-line horizontally*/
-        grid-column: 2/-1;
+        /* grid-column: 2/-1; */
         /* line 2 to -1 of gird-line vertically
-        3 is last line so 3=-1 line 
+        3 is last line so 3=-1 line
         */
         /* we can also use span keyword if we find difficult to track line */
-        grid-row: 1 / span 2;
+        /* grid-row: 1 / span 2; */
         /* span 2 row */
+        /* also have gird-area -> start row columne and end row column*/
+        /* grid-area: 1/1/1/3; */
+        /* it is not as much readable
+        another way to place item is by defining specific area in gird
+        define gird-template-area in container class */
+        grid-area: header;
+      }
+      .box-two {
+        grid-area: sidebar;
+      }
+      .box-four {
+        grid-area: footer;
       }
     </style>
   </head>
